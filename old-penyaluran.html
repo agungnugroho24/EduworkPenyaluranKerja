@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <title>EduWork - Penyaluran</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+      <link type="text/css" rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+
+  <style>
+    @media only screen and (max-device-width: 360px) and (min-device-width: 331px) {
+      html, html body{
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    overflow-x: hidden;
+}
+    }
+
+    .swiper {
+      width: 80%;
+      overflow: visible;
+      /* height: 100%; */
+    }
+    @media (max-width: 767px) {
+  .swiper {
+    width: 100%;
+  }
+}
+
+    .swiper-wrapper {
+     
+      width: 100%;
+      display: flex;
+      /* padding: 20px; */
+      flex-direction: row;
+      /* margin-top: 34px; */
+    }
+
+    .swiper-slider {
+      width: 900px;
+    }
+    .swiper-slide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+  margin-left: 0;
+  margin-right: 0;
+}
+.swiper-slide-active {
+  opacity: 1;
+
+  visibility: visible;
+}
+.swiper-slide-active + .swiper-slide {
+  opacity: 1;
+  visibility: visible;
+}
+.swiper-slide-active + .swiper-slide + .swiper-slide {
+  opacity: 1;
+  
+  visibility: visible;
+}
+.swiper-slide-active + .swiper-slide + .swiper-slide + .swiper-slide {
+  opacity: 0;
+  visibility: visible;
+}
+
+    .swiper-slide {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin: 0 !important; */
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .section-penyaluran {
+      position: relative;
+      background-image: url('./images/penyaluran/fasilitas.jpg');
+      background-size: cover;
+    }
+
+
+    @media (max-width: 767px) {
+      .section-penyaluran {
+        height: auto;
+        background-image: none;
+      }
+
+    }
+
+
+    .overlay-penyaluran {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(85deg, #187CFF -1.4%, #187CFF 35.79%, rgba(24, 124, 255, 0.00) 93.09%);
+    }
+
+
+    .content-penyaluran {
+      position: relative;
+      z-index: 1;
+
+    }
+
+    .section-alumni {
+      position: relative;
+      max-width: 100%;
+      background-image: url('./images/penyaluran/alumni.jpg');
+      background-size: cover;
+
+    }
+
+    .overlay-alumni {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(85deg, #187CFF -1.4%, #187CFF 28%, rgba(24, 124, 255, 0.00) 60%);
+    }
+
+
+    .content-alumni {
+      position: relative;
+      z-index: 1;
+
+    }
+
+    .title-tahapan {
+      letter-spacing: -1.32px;
+      color: #000;
+    }
+    .container-fluid {
+  width: 100%;
+
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+
+
+
+    @media (max-width: 767px) {
+      .title-tahapan {
+        line-height: 50px;
+      }
+
+
+      .section-alumni {
+        position: relative;
+        height: 910px;
+        background-image: none;
+
+      }
+
+      .overlay-alumni {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #187cff;
+
+      }
+
+    }
+
+
+    @media (min-width: 768px) {
+      .title-tahapan {
+        line-height: 68px;
+      }
+    }
+
+    .category-div {
+      padding: 12px;
+      border-radius: 16px;
+
+      box-shadow: 5px 6px 7px 0px rgba(0, 0, 0, 0.10);
+      /* display: flex; */
+      gap: 16px;
+      align-items: center;
+    }
+
+
+    .category-div .text {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 25px;
+      /* 140% */
+      letter-spacing: -0.34px;
+    }
+
+    @media (max-width: 767px) {
+      .category-div .text {
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .category-div {
+        padding: 10px;
+        border-radius: 16px;
+
+        box-shadow: 5px 6px 7px 0px rgba(0, 0, 0, 0.10);
+        /* display: flex; */
+
+        align-items: center;
+      }
+    }
+    
+  </style>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-[#f6fcff] text-[#404040]">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+  <!-- Navbar -->
+
+  <nav class="bg-white border-gray-200 dark:bg-white dark:border-white relative z-10">
+    <div class="container flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="#" class="flex items-center">
+        <img class="h-6 sm:h-7" src="./images/penyaluran/favicon.png" alt="Eduwork Logo" />
+      </a>
+      <div class="flex lg:order-2">
+        <a
+          class="text-black hidden lg:block bg-primary hover:bg-primary/80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mr-3 md:mr-0">
+          <img src="./images/penyaluran/chat.png" alt="" />
+        </a>
+        <a
+          class="text-black hidden lg:block bg-primary hover:bg-primary/80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mr-3 md:mr-0">
+          <img src="./images/penyaluran/76-notification.png" alt="" />
+        </a>
+        <div class="hidden lg:flex md:bg-primary lg:px-5 lg:py-2.5 lg:text-center lg:mr-3 lg:items-center">
+          <img class="rounded-full w-8 h-8 md:w-8 md:h-8 mr-1" src="./images/penyaluran/profile.png" alt="" />
+          <div class="flex items-center">
+            <span class="text-[16px]">Maudy Ayunda</span>
+            <svg class="w-5 h-5 ml-1 text-primary" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <button data-collapse-toggle="navbar-multi-level" type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-multi-level" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      <div class="hidden w-full lg:block lg:w-auto" id="navbar-multi-level">
+        <ul
+          class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white dark:bg-white lg:dark:bg-white dark:border-white text-[18px]">
+          <li>
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded lg:bg-transparent lg:text-blue-700 lg:p-0 lg:dark:text-blue-500 dark:bg-blue-600 lg:dark:bg-transparent text-sm"
+              aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 text-sm">Community</a>
+          </li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+              class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 lg:w-auto text-sm">
+              Learning
+              <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div id="dropdownNavbar"
+              class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                <li>
+                  <a href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                </li>
+
+                <li>
+                  <a href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+              class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 lg:w-auto text-sm">
+              Opportunity
+              <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div id="dropdownNavbar"
+              class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                <li>
+                  <a href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                </li>
+
+                <li>
+                  <a href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="relative container-fluid hidden lg:block">
+    <img class="absolute inset-0 z-0 w-full" src="./images/penyaluran/hero.svg" alt="" />
+    <img class="absolute inset-0 z-0 w-full" src="./images/penyaluran/hero-2.svg" alt="" />
+</div>
+
+
+
+
+  
+  <section class="container mx-auto hero relative lg:grid grid-cols-2 gap-4">
+    <!-- <img class="absolute inset-0 z-0 hidden md:block" src="./images/penyaluran/hero.svg" alt="" /> -->
+    <div class="mx-[20px] mt-[24px] lg:mt-[180px] md:mt-12 relative z-10">
+      <div>
+        <div class="font-bold lg:text-[110px] md:text-[60px] text-[50px]" style="line-height: 1; vertical-align: middle">
+          Akselerasi <br /><span class="text-[#187cff]">Karir</span>
+        </div>
+        <div class="lg:text-[20px] md:text-sm text-[12px] font-[400] lg:leading-8" style="margin-top: 24px">
+          Dapatkan real project dari Mitra Eduwork, Dibimbing oleh mentor
+          profesional di Bidangnya. Juga, Dapatkan Tips & trik dari
+          Profesional HR untuk pembuatan CV dan Latihan Wawancara
+        </div>
+      </div>
+
+      <form class="lg:w-[539px] w-full" style="margin-top: 24px">
+        <label for="default-search"
+          class="mb-2 text-[16px] md:text-sm font-medium text-gray-900 sr-only dark:text-white">Daftar</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"></div>
+          <input type="search" id="default-search"
+            class="block w-full md:p-4 p-2 pl-10 md:text-sm text-[12px] text-gray-900 rounded-full bg-white focus:ring-blue-500 border-none focus:border-none"
+            placeholder="Enter your email" required style="box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);" />
+
+
+          <button type="submit"
+            class="text-white absolute right-2.5 bottom-1 md:bottom-2.5 font-medium rounded-full md:text-sm text-xs md:px-6 px-4 py-2"
+            style="background: linear-gradient(to bottom, #5297f2, #0f55dd)">
+            Daftar
+          </button>
+        </div>
+      </form>
+      <div class="text-[12px] md:text-sm lg:text-[18px]" style="margin-top: 24px">
+        Ingin jadi pengusaha ?
+        <a href="#" class="font-bold" style="color: #5297f2">klik disini</a>
+      </div>
+    </div>
+    <div class="top-20 relative z-10">
+      
+      <div class="hidden lg:grid grid-cols-2">
+        <div class="pl-20">
+          <div class="bg-white border border-gray-200 rounded-2xl shadow mt-8 w-full min-w-[254px] h-auto p-[24px]"
+            style="background-image: linear-gradient(to bottom, #5297F2, #0F55DD)">
+            <div class="flex justify-center items-center">
+
+              <img class="rounded-t-lg " src="./images/penyaluran/profils.png" alt="" />
+
+            </div>
+
+            <div class="mt-[20px]">
+
+              <h5 class="mb-2 text-[20px] font-bold tracking-tight text-white text-center">
+                Ridwan Manurung
+              </h5>
+
+              <p class="mb-3 font-normal text-white text-center text-[14px]">
+                UI/UX Designer at Tokopedia
+              </p>
+              <ul class="text-white mt-2 md:text-[10px] lg:text-[12px] font-extralight">
+                <li><span class="rounded-full w-3 h-3 bg-white inline-block mr-4"></span>Sukses bekerja di Tokopedia
+                </li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-white inline-block mr-4"></span>Dapat gaji
+                  20jt/bulan</li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-white inline-block mr-4"></span>Alumni kelas UI/UX
+                </li>
+              </ul>
+
+
+            </div>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl shadow lg:mt-8 md:mt-4 w-full min-w-[254px] h-auto p-[24px] bg-white"
+            >
+            <div class="flex justify-center items-center">
+             
+                <img class="rounded-t-lg " src="./images/penyaluran/profils.png" alt="" />
+            
+            </div>
+
+            <div class="mt-[20px]">
+
+              <h5 class="mb-2 md:w-md font-bold tracking-tight text-black text-center lg:text-[20px]">
+                Ridwan Manurung
+              </h5>
+
+              <p class="mb-3 font-normal text-blue text-center text-[14px]">
+                UI/UX Designer at Tokopedia
+              </p>
+              <ul class="text-black mt-2 md:text-[10px] lg:text-[12px] font-extralight">
+                <li><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Sukses bekerja di Tokopedia
+                </li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Dapat gaji
+                  20jt/bulan</li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Alumni kelas
+                  UI/UX</li>
+
+              </ul>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="pl-10 pr-6">
+          <div class="bg-white border border-gray-200 rounded-2xl shadow md:-mt-12 w-full min-w-[254px] h-auto p-[24px] bg-white"
+            >
+            <div class="flex justify-center items-center">
+             
+                <img class="rounded-t-lg " src="./images/penyaluran/profils.png" alt="" />
+            
+            </div>
+
+            <div class="mt-[20px]">
+
+              <h5 class="mb-2 md:w-md font-bold tracking-tight text-black text-center lg:text-[20px]">
+                Ridwan Manurung
+              </h5>
+
+              <p class="mb-3 font-normal text-blue text-center text-[14px]">
+                UI/UX Designer at Tokopedia
+              </p>
+              <ul class="text-black mt-2 md:text-[10px] lg:text-[12px] font-extralight">
+                <li><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Sukses bekerja di Tokopedia
+                </li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Dapat gaji
+                  20jt/bulan</li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Alumni kelas
+                  UI/UX</li>
+
+              </ul>
+
+
+            </div>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl shadow lg:mt-8 md:mt-4 w-full min-w-[254px] h-auto p-[24px] bg-white"
+            >
+            <div class="flex justify-center items-center">
+             
+                <img class="rounded-t-lg " src="./images/penyaluran/profils.png" alt="" />
+            
+            </div>
+
+            <div class="mt-[20px]">
+
+              <h5 class="mb-2 md:w-md font-bold tracking-tight text-black text-center lg:text-[20px]">
+                Ridwan Manurung
+              </h5>
+
+              <p class="mb-3 font-normal text-blue text-center text-[14px]">
+                UI/UX Designer at Tokopedia
+              </p>
+              <ul class="text-black mt-2 md:text-[10px] lg:text-[12px] font-extralight">
+                <li><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Sukses bekerja di Tokopedia
+                </li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Dapat gaji
+                  20jt/bulan</li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-blue-500 inline-block mr-4"></span>Alumni kelas
+                  UI/UX</li>
+
+              </ul>
+
+
+            </div>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl shadow md:mt-4 lg:mt-8 w-full min-w-[254px] h-auto p-[24px]"
+            style="background-image: linear-gradient(to bottom, #5297F2, #0F55DD)">
+            <div class="flex justify-center items-center">
+
+              <img class="rounded-t-lg " src="./images/penyaluran/profils.png" alt="" />
+
+            </div>
+
+            <div class="mt-[20px]">
+
+              <h5 class="mb-2 lg:text-[20px] font-bold tracking-tight text-white text-center md:text-md">
+                Ridwan Manurung
+              </h5>
+
+              <p class="mb-3 font-normal text-white text-center text-[14px]">
+                UI/UX Designer at Tokopedia
+              </p>
+              <ul class="text-white mt-2 md:text-[10px] lg:text-[12px] font-extralight">
+                <li><span class="rounded-full w-3 h-3 bg-white inline-block mr-4"></span>Sukses bekerja di Tokopedia
+                </li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-white inline-block mr-4"></span>Dapat gaji
+                  20jt/bulan</li>
+                <li class="mt-2"><span class="rounded-full w-3 h-3 bg-white inline-block mr-4"></span>Alumni kelas UI/UX
+                </li>
+              </ul>
+
+
+            </div>
+          </div>
+          </div>
+
+        </div>
+        </div>
+        
+      </div>
+      <!-- <img class="absolute inset-0 z-0 hidden md:block left-[30%] flex justify-en" src="./images/penyaluran/hero-2.svg" alt="" /> -->
+    </div>
+    
+  </section>
+  <!-- Partner -->
+  <div class="container mx-auto -mt-48">
+    <section
+      class="w-[100%] mx-auto lg:w-full pr-20 h-fit md:h-[220px] mt-[230px] pt-5 mb-[74px] lg:mb-[74px] relative z-10 bg-[#f6fcff]">
+      <div class="flex flex-col lg:flex-row">
+        <div>
+          <h4
+            class="w-full lg:w-[170px] h-[70px] text-center text-[24px] font-medium leading-[28.56px] mr-[37px] md:mr-[74px]">
+            <span class="md:text-[36px] text-[24px] font-[600] text-[#187cff]">Our 100+ </span>Business Partner
+          </h4>
+        </div>
+        <div class="slider w-full overflow-hidden">
+          <div class="slide-track flex gap-[20px] md:gap-[61.05px] items-center h-full">
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/1.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/2.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/3.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/4.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/5.png" />
+            </div>
+          </div>
+
+          <div class="slide-track flex gap-[20px] md:gap-[61.05px] ml-[110px] md:ml-[65.05px] items-center">
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/1.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/2.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/3.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/4.png" />
+            </div>
+            <div class="slide">
+              <img loading="lazy" src="./images/penyaluran/5.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- ISA -->
+  <section class="relative z-20">
+    <div class="container lg:-mt-[150px] mx-auto">
+      <section class="w-[90%] h-fit md:w-[1016px] lg:h-[468px] mb-[78px] lg:mb-[130px] mx-auto lg:mx-0 pr-auto">
+        <div
+          class="hidden lg:block absolute left-0 container mx-auto w-[100%] h-fit lg:h-[387px] bg-[#187cff]  rounded-[33px] lg:rounded-none lg:rounded-tr-[100px] p-[10%] lg:pb-0 lg:pr-0 lg:pt-[48.7px] lg:pl-[213px]">
+        </div>
+        <div
+          class="flex flex-col gap-3 lg:flex-row lg:gap-[41px] w-full lg:w-[80em] lg: h-fit lg:h-[387px] bg-[#187cff] rounded-[20px] lg:rounded-none lg:rounded-tr-[100px] py-[35px] px-[25px] lg:pb-0 lg:pr-0 lg:pt-[48.7px] lg:px-auto">
+          <div class="mx-auto lg:mx-0 lg:w-[359px] lg:h-[604px]">
+            <img loading="lazy" class="ISA-img lg:w-[359px] lg:h-[604px]" src="./images/penyaluran/ISA.png" alt="" srcset="" />
+          </div>
+          
+          <div class="mt-0 z-10">
+            <h1 class="font-[700] text-[30px] lg:text-[48px] text-center lg:text-left text-[#ffffff]">
+              Apa Itu Akselerasi Karir ?
+            </h1>
+
+            <p
+              class="w-full lg:w-[589px] font-[400] text-[16px] text-center lg:text-left lg:text-[20px] mt-[18px] text-[#ffffff]">
+              Dengan program akselerasi karir tambah pengalaman kerja dan dapatkan banyak portofolio dengan bimbingan
+              mentor profesional mulai 0 rupiah!
+            </p>
+            <div
+              class="lg:absolute w-full lg:w-fit h-fit lg:h-[220px] mt-[23.3px] flex flex-col lg:flex-row gap-[13px] md:grid grid-cols-2 lg:mb-10">
+              <div
+                class="w-full lg:max-w-[410px] p-[20px] rounded-[10px] bg-[#ffffff] ISA-card md:text-left text-center">
+                <div class="flex items-center justify-center md:justify-start">
+                  <img class="p-[18px]" src="./images/penyaluran/people.svg" alt="">
+                </div>
+                <h4 class="pl-[18px] font-[700] text-[18px] mb-[5px]">
+                  Sekali bayar dijamin dapat kerja
+                </h4>
+                <p class="pl-[18px] pr-[8px] text-[14px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                  Hanya dengan membayar sekali langsung bimbingan sampai dapat kerja
+                </p>
+              </div>
+
+              <div
+                class="w-full lg:max-w-[410px] p-[20px] rounded-[10px] bg-[#ffffff] ISA-card md:text-left text-center">
+                <div class="flex items-center justify-center md:justify-start">
+                  <img class="p-[18px]" src="./images/penyaluran/people.svg" alt="">
+                </div>
+                <h4 class="pl-[18px] font-[700] text-[18px] mb-[5px]">
+                  Harga Terjangkau & Bisa Dicicil
+                </h4>
+                <p class="pl-[18px] pr-[8px] text-[14px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                  Kuliah bisa puluhan juta, total cukup 5jt bisa dicicil setahun lagi
+                </p>
+                <!-- <ul
+                                class="star pl-[35px] pr-[8px] text-[18px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0"
+                              >
+                                <li>Hanya dengan membayar sekali langsung bimbingan sampai dapat kerja</li>
+                                
+                              </ul> -->
+              </div>
+              <div
+                class="w-full lg:max-w-[410px] p-[20px] rounded-[10px] bg-[#ffffff] ISA-card md:text-left text-center">
+                <div class="flex items-center justify-center md:justify-start">
+                  <img class="p-[18px]" src="./images/penyaluran/people.svg" alt="">
+                </div>
+                <h4 class="pl-[18px] font-[700] text-[18px] mb-[5px]">
+                  Cepat, Tidak Sampai 1 Tahun
+                </h4>
+                <p class="pl-[18px] pr-[8px] text-[14px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                  Dibanding kuliah, sudah lama min 4 tahun, ketika lulus harus cari kerja sendiri lagi
+                </p>
+                <!-- <ul
+                                class="star pl-[35px] pr-[8px] text-[18px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0"
+                              >
+                                <li>Hanya dengan membayar sekali langsung bimbingan sampai dapat kerja</li>
+                                
+                              </ul> -->
+              </div>
+              <div
+                class="w-full lg:max-w-[410px] p-[20px] rounded-[10px] bg-[#ffffff] ISA-card md:text-left text-center">
+                <div class="flex items-center justify-center md:justify-start">
+                  <img class="p-[18px]" src="./images/penyaluran/people.svg" alt="">
+                </div>
+                <h4 class="pl-[18px] font-[700] text-[18px] mb-[5px]">
+                  Dapat Garansi 1 Tahun
+                </h4>
+                <p class="pl-[18px] pr-[8px] text-[14px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                  Kalau sampai 1 tahun belum dapat kerja, kami berikan layanan Gratis !
+                </p>
+                <!-- <ul
+                                class="star pl-[35px] pr-[8px] text-[18px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0"
+                              >
+                                <li>Hanya dengan membayar sekali langsung bimbingan sampai dapat kerja</li>
+                                
+                              </ul> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+  <div class="lg:py-10">
+
+  </div>
+  <!-- penjelasan -->
+  <div class="lg:hidden block absolute top-0 w-full h-[730px] overflow-hidden">
+    <div class="lg:hidden block absolute left-0 w-[200%] md:w-full h-[740px] hero-gradasi z-[9]"></div>
+  </div>
+  <div class="m-0 ">
+    <section id="Hero"
+      class="relative w-full bg-contain h-auto min-w-auto md:bg-center xl:min-w-[1306px] h-[730px] bg-[url('./images/penyaluran/bg-hero1.png')] bg-no-repeat bg-cover">
+      <div class="flex md:flex-row w-[90%] md:w-full mx-auto h-fit lg:w-[1016px]">
+        <div class="w-fit h-[680px] pt-[84px]">
+          <div class="absolute flex flex-col w-[90%] md:w-[80%] z-30">
+            <h1
+              class="font-[700] w-full md:w-[90%] lg:w-[372px] leading-[120%] text-[30px] md:text-[40px] mx-auto lg:mx-0 text-left">
+              Live konsultasi setiap hari selama 20 hari kerja / bulan
+            </h1>
+            <div class="flex-col w-full lg:w-[418px] h-[233px] mt-[37px] md:mt-[65px]">
+              <div class="w-fit h-fit float-left mr-[10.27px]">
+                <div
+                  class="dot flex md:w-[37.73px] w-[30.73px] md:h-[36.09px] h-[29.09px] bg-[#187CFF] md:border-[4.10138px] border-[0.10138px] border-[#e7f7ff] rounded-[82.0276px] mb-[6px] shadow-dot text-white text-center py-[8.20276px 16.4055px] justify-center items-center gap-[8.2px]">
+                  1
+                </div>
+                <div
+                  class="relative flex w-[37.73px] h-[95.38px] md:h-[50.38px] text-center my-[8.20276px 16.4055px] justify-center items-center">
+
+                </div>
+                <div
+                  class="dot flex md:w-[37.73px] w-[30.73px] md:h-[36.09px] h-[29.09px] bg-[#187CFF] md:border-[4.10138px] border-[0.10138px] border-[#e7f7ff] rounded-[82.0276px] mb-[6px] shadow-dot text-white text-center py-[8.20276px 16.4055px] justify-center items-center gap-[8.2px]">
+                  2
+                </div>
+                <div
+                  class="relative flex w-[37.73px] h-[105.38px] md:h-[50.38px] text-center my-[8.20276px 16.4055px] justify-center items-center">
+
+                </div>
+                <div
+                  class="dot flex md:w-[37.73px] w-[30.73px] md:h-[36.09px] h-[29.09px] bg-[#187CFF] md:border-[4.10138px] border-[0.10138px] border-[#e7f7ff] rounded-[82.0276px] mb-[6px] shadow-dot text-white text-center py-[8.20276px 16.4055px] justify-center items-center gap-[8.2px]">
+                  3
+                </div>
+                <div
+                  class="relative flex w-[37.73px] h-[80.38px] md:h-[50.38px] text-center my-[8.20276px 16.4055px] justify-center items-center">
+
+                </div>
+              </div>
+              <div class="w-full md:w-[418px] h-fit tracking-[0.01em]">
+                <h4 class="leading-[24px] text-[20px] md:text-[16px] font-semibold my-[0px] md:my-0">
+                  Konsultasi Perkembangan Skill
+                </h4>
+                <p class="text-[#4E5053] text-[16px] md:text-[14px] font-normal leading-[21px] mb-[19px] md:mb-[31px]">
+                  Dapatkan saran dari mentor profesional mengenai perkembangan skill anda
+                </p>
+                <h4 class="leading-[24px] text-[20px] md:text-[16px] font-semibold my-[10px] md:my-0">
+                  Konsultasi Pengerjaan Project
+                </h4>
+                <p class="text-[#4E5053] text-[16px] md:text-[14px] font-normal leading-[21px] mb-[19px] md:mb-[30px]">
+                  Diskusikan permasalahan project anda bersama para mentor profesional
+                </p>
+                <h4 class="leading-[24px] text-[20px] md:text-[16px] font-semibold mb-[10px] md:mb-0">
+                  Konsultasi Rencana Karir
+                </h4>
+                <p class="text-[#4E5053] text-[16px] md:text-[14px] font-normal leading-[21px] mb-[19px] md:mb-[30px]">
+                  HR profesional kami siap membantu merencanakan persiapan karir anda
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="relative w-full h-[730px] hidden lg:block z-20">
+          <img loading="lazy" class="absolute top-[134px] left-[513.78px] z-10 frame-shade"
+            src="./images/penyaluran/frame.png" alt="" srcset="" />
+          <div
+            class="absolute top-[289.55px] p-[10px] left-[481px] w-[52.43px] h-[52.43px] frame-box-shade bg-[#ffffff] rounded-[15px] z-20">
+            <img loading="lazy" class="icon-shade" src="./images/penyaluran/slack.png" alt="" srcset="" />
+          </div>
+          <div
+            class="absolute top-[345.47px] p-[10px] left-[533.43px] w-[52.43px] h-[52.43px] bg-[#ffffff] frame-box-shade rounded-[15px] z-20">
+            <img loading="lazy" class="icon-shade" src="./images/penyaluran/whatsapp.png" alt="" srcset="" />
+          </div>
+          <div class="arrow2 left-[558.77px] top-[398px]">
+            <div class="relative w-[128px] h-[51.5px] bg-transparent">
+              <div
+                class="absolute right-0 bottom-0 h-[10px] w-[10px] border-[4px] rotate-45 border-l-transparent border-b-transparent border-r-[#404040] border-t-[#404040]">
+              </div>
+            </div>
+          </div>
+          <div class="arrow2 top-[152px] left-[658px] rotate-180"></div>
+          <div class="absolute top-[139px] left-[865px]">
+            <div
+              class="relative w-fit h-fit py-[18px] pl-[11px] pr-[3px] border-[0.666468px] border-[#fff] rounded-xl bg-opacity-75 bg-[#fff]">
+              <p class="w-[116px] text-[18px] leading-[21px] font-[600]" id="text"></p>
+              <div
+                class="absolute -bottom-[19.6px] right-[18px] w-0 h-0 border-t-[20px] border-t-[#fff] border-opacity-75 border-r-[20px] border-r-transparent">
+              </div>
+            </div>
+          </div>
+          <!-- <div class="absolute top-[129px] p-[10px] left-[860px]"><img loading="lazy" src="./images/hero/chat-bubble.png" alt="" srcset=""></div> -->
+          <div
+            class="absolute top-[421px] p-[10px] left-[690px] w-[52.43px] h-[52.43px] bg-[#ffffff] frame-box-shade rounded-[15px] z-20">
+            <img loading="lazy" class="icon-shade" src="./images/penyaluran/zoom.png" alt="" srcset="" />
+          </div>
+          <div
+            class="absolute top-[478.67px] p-[12px] pr-0 left-[751.17px] w-[52.43px] h-[52.43px] bg-[#ffffff] frame-box-shade rounded-[15px] z-20">
+            <img loading="lazy" class="icon-shade" src="./images/penyaluran/play-book.svg" alt="" srcset="" />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute top-0 left-0 w-[200%] md:w-[70%] h-[740px] md:hero-gradasi z-[9] hidden md:block hero-gradasi1">
+      </div>
+      <div class="hero-gradasi2 absolute top-0 right-0 w-[2%] lg:w-[216px] md:h-[856px] h-[700px]"></div>
+      <div class="absolute bottom-0 z-[9] w-full h-[53.809px]"
+        style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%);"></div>
+        <div class="absolute top-0 z-[9] w-full h-[53.809px] bg-gradient-to-b from-slate-50  to-transparent"
+        ></div>
+   
+
+
+      <div class="absolute w-full h-fit top-[667px] md:top-[637px] bg-transparent z-20">
+        <!-- <div class="absolute top-[40px] w-full h-[328.26px] z-[9] ">
+                         <div class="wave"></div>
+                     </div> -->
+
+
+      </div>
+    </section>
+  </div>
+  <!-- end penjelasan -->
+  <!-- List tahapan -->
+  <div class="list-tahapan mt-12 container mx-auto">
+
+    <h1 class="font-[700] mt-[45.41px] text-black text-center text-[33px] md:text-[40px] lg:text-[70px] mb-[13.76px]">
+      Bagaimana Sih Alurnya <span style="color: #0F55DD;">Add On</span><br> Jaminan Kerja ?
+    </h1>
+
+
+
+  </div>
+  <!-- endlist tahapan -->
+  <!-- benefit -->
+  <div class="container mx-auto">
+    <div class="md:grid grid-cols-5 mt-8 px-4 ">
+      <div class=" md:mt-[116px] md:col-span-2 px-4 ">
+        <h4 class="lg:text-[50px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-left title-tahapan" style="line-height:1.3em;">
+          Pendaftaran
+        </h4>
+        <p class="lg:text-[20px] md:text-md text-[16px] font-[400] md:px-0 mt-[14px] text-center md:text-left">
+          Kamu bisa mendaftar dengan cara hubungi admin atau dengan mendaftar kelas ini. Pilih pake add on penyaluran
+          kerja untuk mendapatkan fasiltias ini, tenang ada beberapa model pricing dan metode pembayaran yang
+          meringankan!
+        </p>
+        <div
+          class="text-center mx-auto md:mx-0 md:w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[100px] md:-ml-[1em] mt-[24px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[51px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-left lg:mt-[57px] mt-[14px]  title-tahapan" style="line-height:1.3em;">
+          Career Preparation
+        </h4>
+        <div class="lg:text-[20px] md:text-md text-[16px] font-[400] mt-[14px] lg:mt-[27px] text-right">
+          <ul class=" space-y-1 text-gray-500 list-inside text-right  lg:px-0">
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Pembuatan CV menarik
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Pelatihan Interview
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Simulasi Interview
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Teknis Negosiasi
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Management Conflict
+            </li>
+
+          </ul>
+        </div>
+
+        <div
+          class="text-center mx-auto lg:mx-0 md:w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[100px] md:-ml-[1em] mt-[24px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[51px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-left lg:mt-[57px] mt-[14px] title-tahapan" style="line-height:1.3em;">
+          Membangun Pengalaman Real
+        </h4>
+        <div class="lg:text-[20px] md:text-md text-[16px] font-[400] mt-[24px] lg:mt-[27px] text-right">
+          <ul class=" space-y-1 text-gray-500 list-inside text-right  md:px-0">
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Freelancing man/hour
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Freelancing Project Based
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Internship
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Organisasi
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Kepemimpinan
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Speaker
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Project Pribadi
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Mentoring
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="md:col-span-1 hidden md:block">
+        <h4 class="lg:text-[18px] text-md font-[700] w-full text-center text-[#3F85EC]">
+          Start !
+        </h4>
+        <div style="width: 2px; height: 4%; margin: 0 auto; border-left: 2px dashed #333; position: relative;">
+          <div class="text-center">
+            <div
+              class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+              style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+              1
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 2px; height: 17%; margin: 0 auto; border-left: 2px dashed #333;">
+        </div>
+
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            2
+          </div>
+        </div>
+
+        <div style="width: 2px; height: 19%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            3
+          </div>
+        </div>
+        <div style="width: 2px; height: 19%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            4
+          </div>
+        </div>
+        <div style="width: 2px; height: 19%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            5
+          </div>
+        </div>
+        <div style="width: 2px; height: 22%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            6
+          </div>
+        </div>
+        <div style="width: 2px; height: 2%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+      </div>
+
+      <div class="md:col-span-2 md:pt-0 pt-[24px] px-4 ">
+        <div
+          class="text-center mx-auto lg:mx-0 md:w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[0px]  mt-[24px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[50px] md:text-3xl mt-[14px] text-[30px] font-[700] w-full text-center md:text-right lg:mt-[70px] title-tahapan" style="line-height:1.3em;">
+          Pelatihan Softskill & Hardskill
+        </h4>
+        <div class="md:text-md lg:text-[20px] text-[16px] font-[400] mt-[14px] lg:mt-[27px] ">
+          <ul class="hidden md:block space-y-1 text-gray-500 ">
+            <li class="flex items-center md:justify-end ml-4 md:ml-0">
+              Teori & Praktek
+              <svg class="w-3.5 h-3.5 ml-4 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end">
+              Study Case Real Project
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end">
+              Grup Mentoring
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end">
+              Private Mentor
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end">
+              Team Collaboration
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end">
+              Fundamental Management Kerja
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+          </ul>
+          <ul class="md:hidden space-y-1 text-gray-500 list-inside ">
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Teori & Praktek
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Study Case Real Project
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Grup Mentoring
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Private Mentor
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Team Collaboration
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Fundamental Management Kerja
+            </li>
+          </ul>
+        </div>
+        <div
+          class="text-right mx-auto md:mx-0 md:w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[100px] md:-ml-[1em] mt-[24px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[50px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-right lg:mt-[70px] mt-[14px] title-tahapan" style="line-height:1.3em;">
+          Membangun Personal Branding
+        </h4>
+        <div class="text-[16px] md:text-md lg:text-[20px] font-[400] mt-[14px] lg:mt-[27px] md:text-right">
+          <ul class="hidden md:block space-y-1 text-gray-500 list-inside">
+            <li class="flex items-center justify-end ">
+              Social Media
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end ">
+              Pembuatan Web Pribadi
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end ">
+              Citra as Freelance
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end ">
+              Content Creating
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end ">
+              Blogging
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+            <li class="flex items-center justify-end ">
+              Fundamental Management Kerja
+              <svg class="w-3.5 h-3.5 ml-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+            </li>
+          </ul>
+          <ul class="block md:hidden  space-y-1 text-gray-500 list-inside ">
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Social Media
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Pembuatan Web Pribadi
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Citra as Freelance
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Content Creating
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Blogging
+            </li>
+            <li class="flex items-center ml-4">
+              <svg class="w-3.5 h-3.5 mr-2 text-blue-500 flex-shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+              </svg>
+              Fundamental Management Kerja
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="text-left mx-auto md:mx-0 md:max-w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[70px] mt-[14px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- end benefit -->
+  <!-- penyaluran title -->
+  <div class="list-tahapan mt-20">
+
+    <h1 class="font-[700] mt-[45.41px] text-center text-[33px] text-black md:text-[40px] lg:text-[96px] mb-[13.76px]">
+      Penyaluran <span style="color: #0F55DD;">Kerja</span>
+    </h1>
+    <p class="font-[400] mt-[10px] text-center text-[18px] md:text-[36px] text-black mb-[13.76px] px-4 md:px-0">Bagaimana cara kami menyalurkan
+      kerja</p>
+
+
+  </div>
+  <!-- end penyaluran title -->
+  <!-- penyaluran kerja -->
+  <div class="">
+    <div
+      class="section-penyaluran  mt-[24px] md:mt-[70px] lg:w-full  lg:h-[920px] w-full h-auto rounded-2xl md:rounded-none mx-auto md:mx-0 lg:py-[70px] bg-blue-500 py-[10px] md:px-0 px-[24px]">
+      <div class="hidden md:block overlay-penyaluran"></div>
+      <div class="content-penyaluran">
+        <div class="text-center text-white">
+          <h1 class="font-[700] lg:text-[50px] md:text-3xl text-[30px]">Penyaluran Kerja</h1>
+          <p class="font-[500] md:text-[26px] text-[18px]">Bagaimana cara kami menyalurkan kerja</p>
+        </div>
+        <div class="flex justify-center lg:mt-[42px] lg:text-left text-center">
+          <div
+            class="lg:absolute w-full lg:w-[75%] h-fit lg:h-[220px] mt-[23.3px] flex flex-col mx-auto lg:gap-6 lg:flex-row lg:grid grid-cols-2 lg:mb-10 container">
+            <div class="ml-auto">
+              <div
+              class="w-full h-auto lg:mb-6 md:mb-4 lg:max-w-[600px] md:mx-auto md:max-w-[80%] py-[14px] pr-[10px] md:py-[30px] md:pr-[30px] rounded-[10px] bg-[#ffffff] ISA-card lg:pt-[30px]">
+              <div class="flex items-center justify-center lg:justify-start">
+                <div class="md:w-[80px] w-[44px] h-[44px] md:h-[80px] bg-blue-500 rounded-lg ml-[18px]">
+                  <img class="w-full h-full p-[10px] md:p-[18px]" src="./images/penyaluran/carbon_partnership.svg"
+                    alt="">
+                </div>
+              </div>
+
+
+
+              <h4
+                class="pl-[18px] font-[600] text-[18px] md:text-[24px] md:my-0 my-[5px] pt-[14px] md:mb-[5px] lg:pt-[18px]">
+                Offer ke Hiring Partner
+              </h4>
+              <p
+                class="pl-[18px] pr-[8px] md:pt-0 pt-[14px] text-[14px] md:text-md lg:text-[20px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                Kami akan merekomendasikan anda ke ratusan hiring partner yang sudah terdaftar dan bekerja sama dengan
+                kami secara resmi.
+              </p>
+
+            </div>
+            <div
+              class="w-full lg:max-w-[600px] md:mb-4 md:max-w-[80%] md:mx-auto lg:mb-6 py-[14px] pr-[10px] my-[5px] md:my-0 md:py-[30px] md:pr-[30px] rounded-[10px] bg-[#ffffff] ISA-card lg:pt-[30px]">
+              <div class="flex items-center justify-center lg:justify-start">
+                <div class="md:w-[80px] w-[44px] h-[44px] md:h-[80px] bg-blue-500 rounded-lg ml-[18px]">
+                  <img class="w-full h-full p-[10px] md:p-[18px]"
+                    src="./images/penyaluran/ri_customer-service-2-line.svg" alt="">
+                </div>
+              </div>
+
+
+              <h4 class="pl-[18px] font-[600] text-[18px] md:text-[24px] pt-[14px] md:mb-[5px] lg:pt-[18px]">
+                Virtual Assistant Job Hunting
+              </h4>
+              <p
+                class="pl-[18px] pr-[8px] md:pt-0 pt-[14px] text-[14px] md:text-md lg:text-[20px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                Kami juga memiliki Virtual Assistant yang secara manual membantu kamu apply lowker sesuai dengan
+                kriteria yang sesuai.
+              </p>
+
+            </div>
+            </div>
+            <div>
+              <div
+              class="w-full lg:max-w-[600px] md:max-w-[80%] md:mx-auto lg:mb-6 md:mb-4 py-[14px] pr-[10px] my-[5px] md:my-0 md:py-[30px] md:pr-[30px] rounded-[10px] bg-[#ffffff] ISA-card lg:pt-[30px]">
+              <div class="flex items-center justify-center lg:justify-start">
+                <div class="md:w-[80px] w-[44px] h-[44px] md:h-[80px] bg-blue-500 rounded-lg ml-[18px]">
+                  <img class="w-full h-full p-[10px] md:p-[18px]"
+                    src="./images/penyaluran/material-symbols_motion-photos-auto-outline.svg" alt="">
+                </div>
+              </div>
+
+
+              <h4 class="pl-[18px] font-[600] text-[18px] md:text-[24px] pt-[14px] md:mb-[5px] lg:pt-[18px]">
+                Auto Apply Portal
+              </h4>
+              <p
+                class="pl-[18px] pr-[8px] md:pt-0 pt-[14px] text-[14px] md:text-md lg:text-[20px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                Kami memiliki sistem auto apply ke berbagai portal, sehingga kamu tidak perlu repot apply portal 1-1 ke
+                berbagai perusahaan.
+              </p>
+
+            </div>
+            
+            <div
+              class="w-full lg:max-w-[600px] md:max-w-[80%] md:mx-auto md:mb-4 lg:mb-6 py-[14px] pr-[10px] my-[5px] md:my-0 md:py-[30px] md:pr-[30px] rounded-[10px] bg-[#ffffff] ISA-card lg:pt-[30px]">
+              <div class="flex items-center justify-center lg:justify-start">
+                <div class="md:w-[80px] w-[44px] h-[44px] md:h-[80px] bg-blue-500 rounded-lg ml-[18px]">
+                  <img class="w-full h-full p-[10px] md:p-[18px]" src="./images/penyaluran/lucide_book-up-2.svg" alt="">
+                </div>
+              </div>
+
+
+              <h4 class="pl-[18px] font-[600] text-[18px] md:text-[24px] pt-[14px] md:mb-[5px] lg:pt-[18px]">
+                Apply Mandiri
+              </h4>
+              <p
+                class="pl-[18px] pr-[8px] md:pt-0 pt-[14px] text-[14px] md:text-md lg:text-[20px] font-[400] text-[#737373] flex flex-col gap-[12px] lg:gap-0">
+                Kamu juga masih bisa apply lowongan kerja di portal kami dan berbagai portal lainya sesuai dengan
+                kriteria kamu sendiri.
+              </p>
+
+            </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- end penyaluran kerja -->
+  <!-- list penyaluran -->
+  <section class="container mx-auto">
+    <div class="md:grid grid-cols-5 mt-8 md:mt-[60px] px-4">
+      <div class=" md:col-span-2 px-4">
+        <h4 class="lg:text-[50px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-left title-tahapan md:mt-[100px]" style="line-height:1.3em;">
+          Bantuan saat proses interview kerja
+        </h4>
+        <p class="md:text-md lg:text-[20px] text-[16px] text-center md:text-left px-4 md:px-0 font-[400] mt-[14px] lg:mt-[27px]">
+          Membantu kamu saat akan melakukan interview kerja, persiapan apa saja yang dibutuhkan sesuai dengan perusahaan
+          yang akan menginterview kamu agar lebih personalized.
+        </p>
+        <div
+          class="text-center mx-auto md:mx-0 md:max-w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[100px] mt-[14px] lg:-ml-[1em]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[51px] md:text-3xl text-[30px] font-[700] mt-[14px] w-full text-center md:text-left lg:mt-[57px] title-tahapan" style="line-height:1.3em;">
+          Improvement Skill & Pengalaman kerja
+        </h4>
+        <p class="text-[16px] md:text-md lg:text-[20px] font-[400] text-center md:text-left mt-[14px] lg:mt-[27px]">
+          Nah, misal kalian ternyata masih ada beberapa hal yang kurang, kita akan bimbing kamu agar improvement skill dan
+          pengalaman kerja dengan berbagai program yang kami miliki.
+        </p>
+  
+        <div
+          class="text-center mx-auto md:mx-0 md:max-w-full h-auto md:max-w-[500] w-full h-auto mt-[14px] pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[100px] lg:-ml-[1em]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[51px] md:text-3xl text-[30px] font-[700] w-full text-center mt-[14px] md:text-left lg:mt-[57px] title-tahapan" style="line-height:1.3em;">
+          Dukungan Setelah Kerja
+        </h4>
+        <p class="text-[16px] md:text-md lg:text-[20px] font-[400] mt-[14px] text-center md:text-left lg:mt-[27px]">
+          Tidak cuma sampai disitu aja, setelah bekerja kakak juga masih akan kami bantu dengan layanan layanan kami bila
+          kakak menemukan kesulitan saat bekerja. Lalu kalau setelah kerja ingin cari kerja lagi? tenang di platform kami
+          akan banyak lowongan kerja yang bisa di apply.
+        </p>
+        <div
+          class="text-center mx-auto md:mx-0 md:max-w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[100px] mt-[14px] lg:-ml-[1em]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+      </div>
+      <div class="md:col-span-1 hidden md:block">
+  
+        <div style="width: 2px; height: 5%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            7
+          </div>
+        </div>
+        <div style="width: 2px; height: 16%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            8
+          </div>
+        </div>
+        <div style="width: 2px; height: 17%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            9
+          </div>
+        </div>
+        <div style="width: 2px; height: 12%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            10
+          </div>
+        </div>
+        <div style="width: 2px; height: 20%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            11
+          </div>
+        </div>
+        <div style="width: 2px; height: 18%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+        <div class="text-center" style="position: relative;">
+          <div
+            class="dot flex lg:w-[60px] lg:h-[60px] md:w-[40px] md:h-[40px] lg:text-[32px] md:text-sm bg-[#187CFF] border-[4.10138px] border-[#e7f7ff] rounded-[82.0276px] shadow-dot text-white text-center justify-center items-center"
+            style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 1;">
+            12
+          </div>
+        </div>
+        <div style="width: 2px; height: 14%; margin: 0 auto; border-left: 2px dashed #333;"></div>
+      </div>
+  
+      <div class="md:col-span-2 px-4">
+        <div
+          class="md:block hidden text-right mx-auto md:mx-0 md:w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[0px] lg:-ml-[1em] mt-[24px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[50px] md:text-3xl mt-[14px] text-[30px] font-[700] w-full text-center md:text-right lg:mt-[70px] title-tahapan" style="line-height:1.3em;">
+          Evaluasi penyaluran kerja
+        </h4>
+        <p class="md:text-md lg:text-[20px] text-[16px] font-[400] mt-[14px] lg:mt-[27px] text-center md:text-right">
+          Setelah interview kami juga akan membantu kamu meng-evaluasi hasil interview agar kamu dapat meng-improve
+          kemampuan kamu berkomunikasi dalam interview, ini penting agar setiap interview akan jadi wadah kamu mengasah
+          untuk jadi lebih baik lagi
+        </p>
+        <div
+          class="text-left mx-auto md:mx-0 md:max-w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[70px] mt-[14px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[50px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-right mt-[14px] lg:mt-[70px] title-tahapan" style="line-height:1.3em;">
+          Dapat Kerja !
+        </h4>
+        <p class="text-[16px] md:text-md lg:text-[20px] font-[400] mt-[14px] lg:mt-[27px] text-center md:text-right">
+          Setelah kami evaluasi dan improvement terus menerus, kami jamin kakak pasti akan mendapatkan pekerjaan. Dijamin
+          & Bergaransi kak !
+        </p>
+  
+        <div
+          class="text-left mx-auto md:mx-0 md:max-w-full h-auto md:max-w-[500] w-full h-auto pt-[13px] pl-[13px] pb-[12px] pr-[12px] md:pt-[8px] md:pl-[11px] md:pr-[8px] md:pb-[10px] rounded-[8px] lg:mt-[70px] mt-[14px]">
+          <img loading="lazy" class="w-full h-full" src="./images/penyaluran/benefit.png" alt="" srcset="" />
+        </div>
+        <h4
+          class="lg:text-[50px] md:text-3xl text-[30px] font-[700] w-full text-center md:text-right lg:mt-[178px] mt-[14px] title-tahapan" style="line-height:1.3em;">
+          Koneksi Alumni
+        </h4>
+        <p class="md:text-md lg:text-[20px] text-[16px] font-[400] mt-[24px] lg:mt-[27px] text-center md:text-right">
+          Selamat, kakak sudah menyelesaikan seluruh program dan selalu akan jadi keluarga besar di komunitas kami.
+          Terimakasih ^^
+        </p>
+  
+  
+      </div>
+    </div>
+  </section>
+
+  <!-- end list penyaluran -->
+  <!-- akselerasi -->
+  <section class="pt-[60px]">
+    <div>
+      <h1 class="text-center text-[33px] lg:text-[50px] font-[700] p-[20px]">
+        Keunggulan Program <span class="text-[#187CFF]">Akselerasi</span>
+      </h1>
+    </div>
+  </section>
+  <!-- end akselerasi -->
+  <!-- tabel satu -->
+  <section class="container mx-auto max-w-screen-xl">
+    <div class="flex flex-col z-40">
+      <div class="hidden md:block mt-16 overflow-auto md:overflow-visible mx-auto">
+        <table>
+          <tr class="flex">
+            <td class="w-[400px]"></td>
+            <td class="w-[248px] flex items-center gap-2 justify-center bg-primary/10 rounded-t-3xl py-5">
+              <h1 class="text-[20px] font-semibold text-[#187CFF]">
+                Kuliah
+              </h1>
+            </td>
+            <td class="w-[248px] flex items-center gap-2 justify-center bg-primary/10 rounded-t-3xl py-5">
+  
+              <h1 class="text-[20px] font-semibold text-[#187CFF]">Bootcamp Only</h1>
+            </td>
+            <td class="w-[400px] flex items-center gap-2 justify-center bg-[#3F85EC] rounded-t-3xl py-5">
+  
+              <h1 class="text-[20px] font-[500] text-white">Add on Jaminan Kerja</h1>
+            </td>
+          </tr>
+          <tr class="flex items-center">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[16px] font-semibold pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Lama Belajar sd Kerja
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] font-[500] text-[16px] items-center bg-[#EBF3FF] flex justify-center">
+              > 4 tahun
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] font-[500] text-[16px] items-center bg-[#EBF3FF] flex justify-center">
+              Unestimated
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white items-center bg-[#3F85EC] flex justify-center">
+              < 1 tahun (rata2 1 - 3 bulan) </td> </tr> <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[16px] font-semibold pl-4">
+              Jumlah Sertifikasi
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] font-[500] text-[16px] items-center flex justify-center">
+              1 ijazah
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center  flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              10+ Unlimietd Sertifikasi Eduwork
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center bg-[#EBF3FF] justify-start pt-2 text-[16px] font-semibold pl-4 rounded-l-[12px]">
+              Penyaluran/Submitting Portal
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center bg-primary/5 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center bg-primary/5 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[400px] h-[47px] md:h-[64px]  items-center bg-[#3F85EC] flex justify-center">
+              <img src="./images/penyaluran/check.svg" alt="" />
+            </td>
+          </tr>
+          <tr class="flex">
+            <td class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start text-[16px] font-semibold pl-4">
+              Career Preparation Class
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center bg-primary/10 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[400px] h-[47px] md:h-[64px]  items-center bg-[#3F85EC] flex justify-center">
+              <img src="./images/penyaluran/check.svg" alt="" />
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start text-[16px] font-semibold pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Jaminan Kerja
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center bg-primary/5 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center bg-primary/5 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[400px] h-[47px] md:h-[64px]  items-center bg-[#3F85EC] flex justify-center">
+              <img src="./images/penyaluran/check.svg" alt="" />
+            </td>
+          </tr>
+          <tr class="flex">
+            <td class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start text-[16px] font-semibold pl-4">
+              Pendampingan Setelah Kerja
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center bg-primary/10 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[400px] h-[47px] md:h-[64px]  items-center bg-[#3F85EC] flex justify-center">
+              <img src="./images/penyaluran/check.svg" alt="" />
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] bg-[#EBF3FF] flex items-center justify-start text-[16px] font-semibold pl-4 rounded-l-[12px]">
+              Buildng CV
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[270px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center flex justify-center relative z-10 -ml-[10px]">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] -ml-[12px] items-center bg-[#3F85EC] flex justify-center rounded-b-3xl relative z-20">
+              <img src="./images/penyaluran/check.svg" alt="" />
+            </td>
+          </tr>
+  
+        </table>
+        <div class="py-[10px]">
+          <h1 class="text-center text-[12px] lg:text-[24px] font-[500] p-[20px] text-[#187CFF]">
+            Bangun CV, Portfolio dan Pengalaman Kerja
+          </h1>
+        </div>
+        <table>
+          <tr class="flex">
+  
+  
+  
+          </tr>
+          <tr class="flex items-center">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[16px] font-semibold pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Zoom Mentoring
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center bg-primary/5 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] font-[500] text-[16px] items-center bg-[#EBF3FF] flex justify-center">
+              1x / minggu
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white items-center bg-[#3F85EC] flex justify-center rounded-t-3xl">
+              Unlimited (setiap hari di jam tertentu)
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[16px] font-semibold pl-4">
+              Porto Study Case
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center  flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] font-[500] text-[16px] items-center  flex justify-center">
+              1x
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              Unlimited
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center bg-[#EBF3FF] justify-start pt-2 text-[16px] font-semibold pl-4 rounded-l-[12px]">
+              Pengalaman Magang
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] font-[500] bg-[#EBF3FF] text-[16px] items-center flex justify-center">
+              1x
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] font-[500] bg-[#EBF3FF] text-[16px] items-center flex justify-center">
+              Optional
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              Unlimited
+            </td>
+          </tr>
+          <tr class="flex">
+            <td class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start text-[16px] font-semibold pl-4">
+              Pengalaman Real Project Base
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center bg-primary/10 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              Unlimited
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start text-[16px] font-semibold pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Pengalaman Organisasi
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center text-[16px] font-[500] flex justify-center">
+              Cari sendiri - waktu lama
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center text-[16px] font-[500] flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              Unlimited - Dicarikan, Didampingi & Singkat
+            </td>
+          </tr>
+          <tr class="flex">
+            <td class="w-[400px] h-[47px] md:h-[64px] flex items-center justify-start text-[16px] font-semibold pl-4">
+              Pengalaman Freelance
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center bg-primary/10 flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td class="w-[248px] h-[47px] md:h-[64px] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              Unlimited
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] bg-[#EBF3FF] flex items-center justify-start text-[16px] font-semibold pl-4 rounded-l-[12px]">
+              Pengalaman Speaker
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center font-[500] text-[16px] flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="" />
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#EBF3FF] items-center font-[500] text-[16px] flex justify-center">
+              Unlimited
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[500] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              Unlimited
+            </td>
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] bg-[#FFD976] flex items-center justify-start text-[16px] font-[700] pl-4 rounded-l-[12px]">
+              Start From
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#FFD976] items-center font-[700] text-[16px] flex justify-center">
+              5 jt ++
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#FFD976] items-center font-[700] text-[16px] flex justify-center">
+              500rb
+            </td>
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] font-[700] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center">
+              0 dengan ISA / cicilan 500rb perbulan
+            </td>
+          </tr>
+  
+          <tr class="flex">
+            <td
+              class="w-[400px] h-[47px] md:h-[64px] bg-[#FFCE4F] flex items-center justify-start text-[16px] font-[700] pl-4 rounded-l-[12px]">
+              Total
+            </td>
+            <td
+              class="w-[248px] h-[47px] md:h-[64px] bg-[#FFCE4F] items-center font-[700] text-[16px] flex justify-center">
+              50 jt - 100 jt
+            </td>
+            <td
+              class="w-[275px] h-[47px] md:h-[64px] -ml-[12px] bg-[#FFCE4F] items-center font-[700] text-[16px] flex justify-center relative z-10">
+              500rb - 1jt
+            </td>
+            <td
+              class="w-[400px] -ml-[15px] h-[47px] md:h-[64px] font-[700] text-[16px] text-white bg-[#3F85EC] items-center flex justify-center rounded-b-3xl relative z-20">
+              5jt - 12jt
+            </td>
+          </tr>
+  
+  
+        </table>
+        <div class="py-[20px] flex justify-center">
+          <button class="bg-primary font-[500] text-[20px] rounded-lg text-white w-[350px]" style="border-radius: 20px; padding: 20px 25px; background: var(--gradient, linear-gradient(142deg, #5297F2 0.09%, #0F55DD 100.09%)); box-shadow: 5px 6px 7px 0px rgba(0, 0, 0, 0.10);
+            ">
+            Daftar Sekarang
+          </button>
+        </div>
+  
+  
+  
+      </div>
+  
+      <div class="md:hidden mt-[24px] flex flex-col gap-5">
+        <div class="flex flex-col w-full rounded-2xl bg-gradient-to-b from-primary/10 to-primary/0 p-5 gap-4">
+          <div class="flex items-center gap-3">
+            <h1 class="text-[20px] font-semibold text-primary">
+              Kuliah
+            </h1>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Lama Belajar sd Kerja</p>
+            <!-- <img src="./images/internship/ic-ok.png" class="pr-1" alt="" /> -->
+            <p class="text-xs">> 4 tahun</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Jumlah Sertifikasi</p>
+            <p class="text-xs">1 ijazah</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-6 justify-between">
+            <p class="font-medium">Penyaluran/Submitting Portal</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Career Preparation Class</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Jaminan Kerja</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pendampingan Setelah Kerja</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Building CV</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Zoom Mentoring</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Porto Study Case</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Magang</p>
+            <p class="text-xs">1x</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Real Project Base</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Organisasi</p>
+            <p class="text-xs">Cari sendiri - waktu lama</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Freelance</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Speaker</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-t-2xl bg-[#FFD976] px-5 -mt-[20px] gap-4">
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between pb-2 font-semibold">
+            <p class="font-semibold">Start From</p>
+            <p class="text-sm">5 Juta ++</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-b-2xl bg-[#FFCE4F] px-5 -mt-[20px] gap-4">
+          <div class="h-[1px] w-full bg-[#FFCE4F]"></div>
+          <div class="flex items-center gap-3 justify-between pb-2 font-semibold">
+            <p class="font-semibold">Total</p>
+            <p class="text-sm">50 jt - 100 jt</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-2xl bg-white p-5 gap-4">
+          <div class="flex items-center gap-3">
+            <h1 class="text-[20px] font-semibold text-primary">
+              Bootcamp Only
+            </h1>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Lama Belajar sd Kerja</p>
+            <p class="text-xs">Unestimated</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Jumlah Sertifikasi</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Penyaluran/Submitting Portal</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Career Preparation Class</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Jaminan Kerja</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pendampingan Setelah Kerja</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Building CV</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Zoom Mentoring</p>
+            <p class="text-xs">1x / minggu</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Porto Study Case</p>
+            <p class="text-xs">1x</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Magang</p>
+            <p class="text-xs">Optional</p>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Real Project Base</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Organisasi</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Freelance</p>
+            <img src="./images/penyaluran/close.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Speaker</p>
+            <p class="text-xs">Unlimited</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-t-2xl bg-[#FFD976] px-5 -mt-[20px] gap-4">
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between pb-2 font-semibold">
+            <p class="font-semibold">Start From</p>
+            <p class="text-sm">500rb </p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-b-2xl bg-[#FFCE4F] px-5 -mt-[20px] gap-4">
+          <div class="h-[1px] w-full bg-[#FFCE4F]"></div>
+          <div class="flex items-center gap-3 justify-between pb-2 font-semibold">
+            <p class="font-semibold">Total</p>
+            <p class="text-sm">500rb - 1jt</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-2xl bg-[#3F85EC] p-5 gap-4">
+          <div class="flex items-center gap-3">
+            <h1 class="text-[20px] font-semibold text-white">
+              Add on Jaminan Kerja
+            </h1>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Lama Belajar sd Kerja</p>
+            <p class="text-xs">
+              < 1 tahun (rata2 1 - 3 bulan)</p> </div> <div class="h-[1px] w-full bg-[#f6fcff]">
+          </div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Jumlah Sertifikasi</p>
+            <p class="text-xs">10+ Unlimietd Sertifikasi Eduwork</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Penyaluran/Submitting Portal</p>
+            <img src="./images/penyaluran/check.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Career Preparation Class</p>
+            <img src="./images/penyaluran/check.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Jaminan Kerja</p>
+            <img src="./images/penyaluran/check.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Pendampingan Setelah Kerja</p>
+            <img src="./images/penyaluran/check.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Building CV</p>
+            <img src="./images/penyaluran/check.svg" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Zoom Mentoring</p>
+            <p class="text-xs">Unlimited (setiap hari di jam tertentu)</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Porto Study Case</p>
+            <p class="text-xs">Unlimited</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Pengalaman Magang</p>
+            <p class="text-xs">Unlimited</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Pengalaman Real Project Base</p>
+            <p class="text-xs">Unlimited</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Pengalaman Organisasi</p>
+            <p class="text-xs">Unlimited - Dicarikan, Didampingi & Singkat</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Pengalaman Freelance</p>
+            <p class="text-xs">Unlimited</p>
+          </div>
+          <div class="h-[1px] w-full bg-[#f6fcff]"></div>
+          <div class="flex items-center gap-3 justify-between text-white">
+            <p class="font-medium">Pengalaman Speaker</p>
+            <p class="text-xs">Unlimited</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-t-2xl bg-[#FFD976] px-5 -mt-[20px] gap-4">
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between pb-2 font-semibold">
+            <p class="font-semibold">Start From</p>
+            <p class="text-sm">0 dengan ISA / cicilan 500rb perbulan</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-b-2xl bg-[#FFCE4F] px-5 -mt-[20px] gap-4">
+          <div class="h-[1px] w-full bg-[#FFCE4F]"></div>
+          <div class="flex items-center gap-3 justify-between pb-2 font-semibold">
+            <p class="font-semibold">Total</p>
+            <p class="text-sm">5jt - 12jt</p>
+          </div>
+        </div>
+      </div>
+      <div class="md:hidden py-[20px] flex justify-center">
+        <button class="bg-primary font-[500] text-[18px] rounded-lg text-white w-[80%]" style="border-radius: 20px; padding: 20px 25px; background: var(--gradient, linear-gradient(142deg, #5297F2 0.09%, #0F55DD 100.09%)); box-shadow: 5px 6px 7px 0px rgba(0, 0, 0, 0.10);
+          ">
+          Daftar Sekarang
+        </button>
+      </div>
+  
+  
+  
+    </div>
+  </section>
+
+
+
+  </div>
+  <!-- end tabel satu -->
+  <!-- title portofolio -->
+  <section class="md:pt-[64px] pt-[24px] md:px-0 px-4">
+    <div>
+      <h1 class="text-center text-[33px] lg:text-[50px] font-[700]">
+        <span class="text-[#3F85EC]">Portofolio</span> Dari Alumni Kami
+      </h1>
+    </div>
+  </section>
+  <!-- end title portofolio -->
+
+  
+  <div class="container mx-auto py-[24px] flex items-center max-w-screen-xl justify-center lg:px-0 gap-4 lg:gap-0">
+    
+    <div class="">
+      <button class=" category-div inline-flex transform hover:scale-105 transition-transform duration-200"
+          style="background: var(--neutral-10, #FFF);">
+          <img class="md:w-[34px] w-[24px]" src="./images/penyaluran/all.png" alt="">
+          <span class="text inline-block md:text-sm text-xs">Semua</span>
+        </button>
+    </div>
+    <div class="swaiper">
+
+        <div class="swaiper-wrap flex flex-row md:gap-4 md:pl-4">
+          <div class="swaiper-slide">
+              <button class="category-div inline-flex md:p-4 p-2 transform hover:scale-105 transition-transform duration-200"
+                style="background: var(--gradient, linear-gradient(142deg, #5297F2 0.09%, #0F55DD 100.09%));">
+                <img class="md:w-[34px] w-[24px]" src="./images/penyaluran/phone.svg" alt="">
+                <span class="text text-white md:text-sm text-xs inline-block">IOS Developer</span>
+              </button>
+
+          </div>
+         
+          <div class="swaiper-slide hidden lg:block">
+    
+              
+              <button class="category-div md:inline-flex md:p-4 p-2 transform hover:scale-105 transition-transform duration-200" style="background: var(--neutral-10, #FFF);">
+                <img class="md:w-[34px] w-[24px]" src="./images/penyaluran/back-end.svg" alt="">
+                <span class="text md:text-sm text-xs inline-block">Back-End Engineer</span>
+              </button>
+        
+          </div>
+          <div class="swaiper-slide hidden lg:block">
+          
+              <button class="category-div md:inline-flex md:p-4 p-2 transform hover:scale-105 transition-transform duration-200" style="background: var(--neutral-10, #FFF);">
+                <img class="md:w-[34px] w-[24px]" src="./images/penyaluran/front.svg" alt="">
+                <span class="text md:text-sm text-xs inline-block">Front-End Engineer</span>
+              </button>
+            
+          </div>
+          <div class="swaiper-slide hidden lg:block">
+           
+              <button class="category-div md:inline-flex md:p-4 p-2 transform hover:scale-105 transition-transform duration-200" style="background: var(--neutral-10, #FFF);">
+                <img class="md:w-[34px] w-[24px]" src="./images/penyaluran/uiux.svg" alt="">
+                <span class="text md:text-sm text-xs inline-block">UI/UX Designer</span>
+              </button>
+            
+          </div>
+         
+
+          <div class="flex items-center ml-4 md:ml-0">
+            <img src="./images/penyaluran/arrow.png" class="swiper-Button-next" alt="" style="cursor: pointer;">
+          </div>
+        </div>
+
+
+
+    </div>
+    
+    
+    
+  </div>
+  </div>
+
+
+  </div>
+  <!-- end slide category porto -->
+  <!-- portofolio -->
+  <section class="md:py-[24px] container mx-auto relative">
+
+    <div>
+     
+
+
+
+      <div class="hidden lg:block absolute z-10 p-[14px] bg-white rounded-full right-[5%] top-1/2 transform -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 flex justify-center items-center next-penyaluran"><img src="./images/penyaluran/chevron-right-arrow.svg" alt=""></div>
+      <div class="hidden lg:block absolute z-10 p-[14px] bg-white rounded-full left-[5%] top-1/2 transform -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 flex justify-center items-center next-penyaluran"><img src="./images/penyaluran/chevron-right-arrow.png" alt=""></div>
+
+
+    </div>
+<div class="lg:grid grid-cols-3 gap-4">
+        <div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="md:text-[24px] text-[20px]" style="margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="text-[20px] md:text-[24px]" style=" margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="text-[20px] md:text-[24px]" style=" margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="md:text-[24px] text-[20px]" style="margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="text-[20px] md:text-[24px]" style=" margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="text-[20px] md:text-[24px]" style=" margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+
+        </div>
+        <div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="md:text-[24px] text-[20px]" style="margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="text-[20px] md:text-[24px]" style=" margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+          <div style="position: relative; " class="mb-[10px] md:w-full w-full">
+            <img class="w-full h-full" src="./images/penyaluran/porto.png" alt="">
+            <div
+              style="position: absolute; bottom: 0; left: 0; width: 100%; height: 322px; background: linear-gradient(180deg, rgba(48, 48, 48, 0.00) 0%, #303030 100%); padding: 10px; ">
+
+            </div>
+            <div class="absolute bottom-[18px] left-[21px]">
+              <p class="text-[20px] md:text-[24px]" style=" margin: 0; color: white;">Landing Page Website</p>
+              <p style="font-size: 14px; margin: 0; color: white;">By Mark Zukerberg</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+        </div>
+  
+      
+   
+    <div class="text-center font-[500] md:text-[24px] text-[18px] text-blue-500 pt-[24px]">
+      <a href="#">
+        Lihat Selengkapnya
+      </a>
+      <div class="flex md:space-x-4 space-x-2 justify-center items-center mt-[38px]">
+        <img src="./images/penyaluran/chevron-right-arrow.png" alt="">
+        <div class="md:w-[16px] w-[12px] md:h-[16px] h-[12px] bg-blue-500 rounded-full"></div>
+        <div class="md:w-[16px] w-[12px] md:h-[16px] h-[12px] bg-gray-400 rounded-full"></div>
+        <div class="md:w-[16px] w-[12px] md:h-[16px] h-[12px] bg-gray-400 rounded-full"></div>
+        <div class="md:w-[16px] w-[12px] md:h-[16px] h-[12px] bg-gray-400 rounded-full"></div>
+        <img src="./images/penyaluran/chevron-right-arrow.svg" alt="">
+    </div>
+    </div>
+  </section>
+  <!-- end portofolio -->
+
+  <!-- alumni -->
+  <div
+    class="section-alumni mt-[24px] md:mt-[70px] lg:w-full md:h-[910px] h-full w-full lg:py-[70px] pb-[5em] mx-auto">
+    <div class="overlay-alumni"></div>
+    <div class="content-alumni relative z-10">
+      <div class="container text-center md:text-left mx-auto lg:pl-48 md:pl-20">
+        <div class="md:text-start text-white lg:mt-[10px] md:mt-[30px] mt-[44px] mx-4 lg:mx-0 py-4 lg:py-0">
+          <h3 class="md:font-[700] font-[500] lg:text-[36px] md:text-[50px] text-[40px]">Alumni Success Story</h3>
+          <p class="hidden md:block lg:font-[700] font-[500] md:w-[80%] text-[18px] lg:text-[44px] md:text-[30px] md:mt-[48px] mt-[14px] "
+            style="letter-spacing: -0.968px; line-height: 52px;">Dapat kerja dengan gaji 2 digit dari koneksi
+            dengan perusahaan asal korea</p>
+          <p class="md:hidden lg:font-[700] font-[400] text-[24px] md:text-[30px] lg:text-[44px] md:mt-[48px] mt-[14px] "
+            style="letter-spacing: -0.968px; line-height: 30px;">Dapat kerja dengan gaji 2 digit dari koneksi dengan
+            perusahaan asal korea</p>
+          <p class="font-[500] md:text-[24px] mt-[48px]">Fadil Mahmud</p>
+          <p class="font-[500] md:text-[24px] mt-[8px]">Product Designer | Samsung Group</p>
+          <div class="md:mt-[60px]">
+            <button
+              class="bg-white font-[600] text-[12px] mt-[14px] md:mt-0 md:text-[16px] rounded-lg text-blue-500 md:p-[16px] p-[12px] w-[90%] lg:w-[20%]"
+              style="border-radius: 20px; letter-spacing: 0.16px;">
+              Simak Kisahnya
+            </button>
+          </div>
+        </div>
+      </div>
+    
+
+
+    </div>
+    
+ <div class="container mx-auto">
+
+  <div class="md:hidden">
+    <div class="swiper-Button-prev bottom-0 left-1/3 absolute  z-10 lg:p-[14px] p-[12px] bg-white rounded-full   bottom- transform -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 flex items-center justify-center prev-penyaluran"><img class="lg:w-full w-[24px]" src="./images/penyaluran/chevron-right-arrow.png" alt=""></div>
+    <div class="swiper-Button-next absolute z-10 lg:p-[14px] p-[12px] bg-white rounded-full  md:bottom-[35%] bottom-[0%] right-1/3 md:right-[15%] transform -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 flex justify-center items-center next-penyaluran"><img class="lg:w-full w-[24px]" src="./images/penyaluran/chevron-right-arrow.svg" alt=""></div>
+  </div>
+ 
+  <div class="swiper mySwiper lg:ml-[140px] hidden md:block">
+    <div class="hidden md:block">
+      <div class="swiper-Button-prev absolute  z-10 md:p-[14px] p-[12px] bg-white rounded-full  md:bottom-[35%] bottom-[0%] left-[30%] md:left-[-10%] bottom- transform -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 flex items-center justify-center prev-penyaluran"><img class="md:w-full w-[24px]" src="./images/penyaluran/chevron-right-arrow.png" alt=""></div>
+      <div class="swiper-Button-next absolute z-10 md:p-[14px] p-[12px] bg-white rounded-full  md:bottom-[35%] bottom-[0%] right-[30%] md:right-[-15%] transform -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 flex justify-center items-center next-penyaluran"><img class="md:w-full w-[24px]" src="./images/penyaluran/chevron-right-arrow.svg" alt=""></div>
+    </div>
+
+       
+    <div class="md:mt-[68px] mt-[14px] swiper-wrapper gap-4">
+      <div class=" swiper-slide">
+        <div class="flex flex-col relative max-w-[250px] lg:max-w-[360px] relative">
+          <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+            class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+            style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+          <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+            <p class="font-[500] text-[14px] lg:text-[20px]">Nadia</p>
+            <p class="font-[400] text-[12px] lg:text-[16px]">Human Resource</p>
+            <p class="font-[400] text-[12px] lg:text-[16px] my-[16px] lg:my-[20px] line-clamp-3 lg:line-clamp-3 lg:max-w-[340px] max-w-[220px]"
+              style="line-height: 24px;">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+              congue ornare neque tincidunt auctor.
+            </p>
+            <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+          </div>
+        </div>
+
+      </div>
+      <div class=" swiper-slide">
+        <div class="flex flex-col relative max-w-[250px] lg:max-w-[360px] relative">
+          <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+            class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+            style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+          <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+            <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+            <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+            <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+              style="line-height: 24px;">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+              congue ornare neque tincidunt auctor.
+            </p>
+            <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+          </div>
+        </div>
+
+      </div>
+      <div class=" swiper-slide">
+        <div class="flex flex-col relative max-w-[250px] lg:max-w-[360px] relative">
+          <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+            class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+            style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+          <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+            <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+            <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+            <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+              style="line-height: 24px;">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+              congue ornare neque tincidunt auctor.
+            </p>
+            <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+          </div>
+        </div>
+
+      </div>
+      <div class=" swiper-slide">
+        <div class="flex flex-col relative max-w-[250px] lg:max-w-[360px] relative">
+          <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+            class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+            style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+          <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+            <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+            <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+            <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+              style="line-height: 24px;">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+              congue ornare neque tincidunt auctor.
+            </p>
+            <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+ </div>
+    
+      <div class="swiper mySwiper md:hidden">
+        <div class="swiper-wrapper py-[3em]">
+          <div class="swiper-slide">
+             <div class="relative max-w-[250px] md:max-w-[360px]">
+              <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+                class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+                style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+              <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+                <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+                <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+                <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+                  style="line-height: 24px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+                  congue ornare neque tincidunt auctor.
+                </p>
+                <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="relative max-w-[250px] md:max-w-[360px]">
+              <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+                class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+                style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+              <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+                <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+                <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+                <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+                  style="line-height: 24px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+                  congue ornare neque tincidunt auctor.
+                </p>
+                <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="relative max-w-[250px] md:max-w-[360px]">
+              <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+                class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+                style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+              <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+                <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+                <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+                <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+                  style="line-height: 24px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+                  congue ornare neque tincidunt auctor.
+                </p>
+                <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="relative max-w-[250px] md:max-w-[360px]">
+              <img src="./images/penyaluran/testi-satu.jpg" alt="Image"
+                class="w-full h-[300px] md:h-[320px] rounded-[12px] object-cover object-top" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-[12px]"
+                style="height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+              <div class="absolute top-0 left-0 transform translate-y-1/2 text-white px-[16px] pb-[20px]">
+                <p class="font-[500] text-[14px] md:text-[20px]">Nadia</p>
+                <p class="font-[400] text-[12px] md:text-[16px]">Human Resource</p>
+                <p class="font-[400] text-[12px] md:text-[16px] my-[16px] md:my-[20px] line-clamp-3 md:line-clamp-3 md:max-w-[340px] max-w-[220px]"
+                  style="line-height: 24px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis id magna sed ultrices. Quisque
+                  congue ornare neque tincidunt auctor.
+                </p>
+                <a href="#" class="text-white font-[400] md:font-[600] text-[12px] md:text-[16px]">Simak kisahnya</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    
+  </div>
+  <!-- end alumni -->
+
+  <!-- title harga -->
+  <section class="lg:pt-[160px] pt-[70px]">
+    <div>
+      <h1 class="text-center text-[30px] lg:text-[50px] font-[700]">
+        Keterangan <span class="text-[#3F85EC]">Harga Paket</span>
+      </h1>
+    </div>
+  </section>
+  <!-- end title harga -->
+  <!-- tabel harga -->
+  <section class="">
+    <div class="w-full flex flex-col z-40 container mx-auto">
+      <div class="hidden lg:block mt-16 overflow-auto md:overflow-visible mx-auto w-auto">
+        <table>
+          <tr class="flex">
+            <td class="w-[290px]"></td>
+            <td class="w-[228px] flex items-center gap-2 justify-center bg-primary/10 rounded-t-3xl py-5">
+              <h1 class="text-[20px] font-[700]">
+                Bulanan
+              </h1>
+            </td>
+            <td class="w-[228px] flex items-center gap-2 justify-center bg-primary/10 rounded-t-3xl py-5">
+
+              <h1 class="text-[20px] font-[700]">Tunai</h1>
+            </td>
+            <td class="w-[228px] flex items-center gap-2 justify-center bg-primary/10 rounded-t-3xl py-5">
+
+              <h1 class="text-[20px] font-[700]">Cicilan</h1>
+            </td>
+            <td class="w-[228px] flex items-center gap-2 justify-center bg-primary/10 rounded-t-3xl py-5">
+
+              <h1 class="text-[20px] font-[700]">ISA</h1>
+            </td>
+
+          </tr>
+          <tr class="flex items-center">
+            <td
+              class="w-[290px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[20px] font-[700] pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Biaya
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              Rp. 500rb
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] p-[10px] text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              Rp. 4 JT
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] p-[10px] font-[500] text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              Rp. 6 JT
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] p-[10px] font-[500] text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center rounded-r-[12px]">
+              Rp. 8-12 JT
+            </td>
+
+
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[290px] h-[47px] md:h-[64px] flex items-center p-[10px] justify-start pt-2 text-[20px] font-[700] pl-4">
+              Tipe Pembayaran
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center flex justify-center">
+              Tunai
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center  flex justify-center">
+              Tunai
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center  flex justify-center">
+              Cicilan 2-3 kali
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] p-[10px] text-[20px] text-[#3F85EC] items-center  flex justify-center">
+              Jaminan awal 1 juta
+            </td>
+
+          </tr>
+          <tr class="flex items-center">
+            <td
+              class="w-[290px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[20px] font-[700] pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Akses dan Pendampingan
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] flex items-center text-center bg-[#EBF3FF] flex justify-center">
+              Selama Belangganan
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-center  text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              Sampai <br> dapat kerja
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px]  font-[500] text-center text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              Sampai <br> dapat kerja
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] text-center  font-[500] text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center rounded-r-[12px]">
+              Sampai <br> dapat kerja
+            </td>
+
+
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[290px] h-[47px] md:h-[64px] flex items-center p-[10px] justify-start pt-2 text-[20px] font-[700] pl-4">
+              Dibayar Setelah Kerja
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center  flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center  flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] p-[10px] text-[20px] text-[#3F85EC] items-center  flex justify-center">
+              <img src="./images/penyaluran/check-good.svg" alt="">
+            </td>
+
+          </tr>
+          <tr class="flex items-center">
+            <td
+              class="w-[290px] h-[47px] md:h-[64px] flex items-center justify-start pt-2 text-[20px] font-[700] pl-4 bg-[#EBF3FF] rounded-l-[12px]">
+              Garansi Dapat Kerja
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] flex items-center text-center bg-[#EBF3FF] flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-center  text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              <img src="./images/penyaluran/check-good.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px]  font-[500] text-center text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center">
+              <img src="./images/penyaluran/check-good.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] text-center  font-[500] text-[20px] text-[#3F85EC] items-center bg-[#EBF3FF] flex justify-center rounded-r-[12px]">
+              <img src="./images/penyaluran/check-good.svg" alt="">
+            </td>
+
+
+          </tr>
+          <tr class="flex">
+            <td
+              class="w-[290px] h-[47px] md:h-[64px] flex items-center p-[10px] justify-start pt-2 text-[20px] font-[700] pl-4">
+              Bonus Bootcamp
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center  flex justify-center">
+              <img src="./images/penyaluran/check-good.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] text-[20px] p-[10px] text-[#3F85EC] items-center  flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+            <td
+              class="w-[228px] h-[47px] md:h-[64px] font-[500] p-[10px] text-[20px] text-[#3F85EC] items-center  flex justify-center">
+              <img src="./images/penyaluran/close.svg" alt="">
+            </td>
+
+          </tr>
+
+        </table>
+        <div class="py-[44px] flex justify-center">
+          <button class="bg-primary font-[500] text-[20px] rounded-lg text-white w-[350px]" style="border-radius: 20px; padding: 20px 25px; background: var(--gradient, linear-gradient(142deg, #5297F2 0.09%, #0F55DD 100.09%)); box-shadow: 5px 6px 7px 0px rgba(0, 0, 0, 0.10);
+          ">
+            Daftar Sekarang
+          </button>
+        </div>
+
+
+
+      </div>
+      <div class="lg:hidden">
+        <img src="./images/penyaluran/harga.png" alt="" class="transform transition-transform hover:scale-150 hover:m-6" />
+      </div>
+      <div class="py-[44px] flex justify-center lg:hidden">
+        <button class="bg-primary font-[500] text-[20px] rounded-lg text-white w-[80%]" style="border-radius: 20px; padding: 12px 17px; background: var(--gradient, linear-gradient(142deg, #5297F2 0.09%, #0F55DD 100.09%)); box-shadow: 5px 6px 7px 0px rgba(0, 0, 0, 0.10);
+        ">
+          Daftar Sekarang
+        </button>
+      </div>
+      
+
+      <!-- <div class="md:hidden mt-16 flex flex-col gap-5">
+        <div class="flex flex-col w-full rounded-2xl bg-gradient-to-b from-primary/10 to-primary/0 p-5 gap-4">
+          <div class="flex items-center gap-3">
+            <h1 class="text-[20px] font-semibold text-primary">
+              Kuliah
+            </h1>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Meningkatkan Skill</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Menambah Portofolio</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Sertifikat Kompetensi</p>
+            <img src="./images/internship/ic-x.png" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Case Study Premium</p>
+            <img src="./images/internship/ic-x.png" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Private Mentor</p>
+            <img src="./images/internship/ic-x.png" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Kerja</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Sertifikat Magang</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+        </div>
+        <div class="flex flex-col w-full rounded-2xl bg-white p-5 gap-4">
+          <div class="flex items-center gap-3">
+            <img src="./images/internship/ic-love.png" alt="" />
+            <h1 class="text-[20px] font-semibold">Contributor+ Mentorship</h1>
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Meningkatkan Skill</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Menambah Portofolio</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Sertifikat Kompetensi</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Case Study Premium</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Private Mentor</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Pengalaman Kerja</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+          <div class="h-[1px] w-full bg-black/5"></div>
+          <div class="flex items-center gap-3 justify-between">
+            <p class="font-medium">Sertifikat Magang</p>
+            <img src="./images/internship/ic-ok.png" class="pr-1" alt="" />
+          </div>
+        </div>
+      </div> -->
+
+
+    </div>
+  </section>
+  <!-- end tabel harga -->
+  <!-- FAQ -->
+  <div class="container mx-auto mt-[82px]">
+    <section class="relative h-fit md:w-full lg:w-full lg:h-[581px] z-10">
+      <h1 class="text-center text-[30px] lg:text-[50px] font-[700] mb-[22px]">
+        Frequently <span class="text-[#3F85EC]">Ask Question</span>
+      </h1>
+      <div class="columns-1 md:columns-2 gap-10">
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+              
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+          
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+        <div
+          class="acc w-full lg:w-full h-fit text-[#202020] overflow-hidden shadow-s2 rounded-[15px] md:mb-[27px] mb-[12px] cursor-pointer">
+          <div
+            class="label w-[100%] text-[14px] lg:w-full h-fit lg:h-[82px] relative bg-[#ffffff] text-[#202020] lg:text-[20px] font-[400] px-[18px] py-[15px] flex flex-row items-center justify-between gap-[22px]">
+            <div class="flex items-center gap-4">
+              <img loading="lazy" class=" " src="./images/penyaluran/inpo.png" alt="" />
+              <h2>Lorem ipsum dolor sit amet</h2>
+            </div>
+            <img class="ml-auto" src="./images/penyaluran/arrow-down.png" alt="">
+          </div>
+          <div class="content">
+            <p class="my-[10px] mx-[15px]">
+              Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit
+              amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem
+              ipsum dolor sit amet consectetur.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Footer section -->
+  <section class="relative w-full h-[1270px] md:h-[1070px] pb-[20px] md:pb-0">
+    <div class="container mx-auto relative">
+      <div
+        class="absolute w-[80%] mx-auto left-1/2 -translate-x-1/2 h-fit lg:w-fit lg:h-[575px] md:pt-[86px] top-[267px]">
+        <div class="flex flex-col gap-[23px] md:flex-row text-[#ffffff]">
+          <div class="md:w-[237.51px]">
+            <img loading="lazy" class="w-[250px] h-[48.53px] lg:w-fit md:h-fit mx-auto md:mx-0"
+              src="./images/penyaluran/favicon-white.svg" alt="" srcset="" />
+            <p class="text-[16px] md:text-[14px] mt-[37.56px] mb-[18px] text-center md:text-left">
+              When an unknown printer took a galley of type and make a type
+              specimen book.
+            </p>
+            <div class="flex flex-row mb-[60.08px]">
+              <div class="inline-flex gap-[22px] mx-auto md:mx-0">
+                <img loading="lazy" src="./images/svg/white-instagram.svg" alt="" srcset="" />
+                <img loading="lazy" src="./images/svg/white-twitter.svg" alt="" srcset="" />
+                <img loading="lazy" src="./images/svg/white-youtube.svg" alt="" srcset="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="columns-2 flex flex-row md:ml-[80.49px] justify-between">
+            <div class="flex flex-col gap-[41px] w-[159.78px] h-[375px]">
+              <div class="h-fit">
+                <h1 class="font-[600] text-[18px] mb-[20px]">Explore Us</h1>
+                <ul class="text-[14px] md:text-[12px]">
+                  <a href="">
+                    <li class="mb-[12px]">Kelas</li>
+                  </a>
+                  <a href="">
+                    <li class="mb-[12px]">Our Mentors</li>
+                  </a>
+                  <a href="">
+                    <li class="mb-[12px]">For Corporate</li>
+                  </a>
+                  <a href="">
+                    <li>Community</li>
+                  </a>
+                </ul>
+              </div>
+
+              <div class="h-[167px]">
+                <h1 class="font-[600] text-[18px] mb-[20px]">Our Services</h1>
+                <ul class="text-[14px] md:text-[12px]">
+                  <a href="">
+                    <li class="mb-[12px]">Free Event</li>
+                  </a>
+                  <a href="">
+                    <li class="mb-[12px]">Video Course</li>
+                  </a>
+                  <a href="">
+                    <li class="mb-[12px]">Bootcamp</li>
+                  </a>
+                  <a href="">
+                    <li>Private Mentoring</li>
+                  </a>
+                </ul>
+              </div>
+            </div>
+            <div class="flex flex-col gap-[41px] w-fit md:w-[198px] h-[375px] text-left">
+              <div class="h-fit">
+                <h1 class="font-[600] text-[18px] mb-[20px]">Category</h1>
+                <ul class="text-[14px] md:text-[12px]">
+                  <a href="">
+                    <li class="mb-[12px]">Mobile Developer</li>
+                  </a>
+                  <a href="">
+                    <li class="mb-[12px]">Website Developer</li>
+                  </a>
+                  <a href="">
+                    <li class="mb-[12px]">UI/UX Designer</li>
+                  </a>
+                  <a href="">
+                    <li>Graphic Designer</li>
+                  </a>
+                </ul>
+              </div>
+
+              <div class="h-[167px]">
+                <h1 class="font-[600] text-[18px] mb-[20px]">Office</h1>
+                <ul class="text-[14px] md:text-[12px]">
+                  <li class="mb-[12px]">PT Eduwork.id</li>
+                  <li class="mb-[12px]">Jl. Ring Road Utara No 24</li>
+                  <li class="mb-[12px]">Yogyakarta. Indonesia</li>
+                  <a href="">
+                    <li>team@eduwork.id</li>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h1 class="font-[600] text-[18px] mt-[60px] md:mt-0 mb-[10px] text-center md:text-left">
+              Promotions
+            </h1>
+            <ul class="text-[14px] md:text-[12px]">
+              <a href="">
+                <li class="mb-[12px] text-center md:text-left">
+                  Submit your email for new updates
+                </li>
+              </a>
+              <li class="flex flex-row">
+                <input
+                  class="rounded-l-[5px] bg-[#f6fcff] w-full md:w-[190.01px] h-[55px] border border-white text-[#404040]"
+                  type="email" name="" id="" />
+                <button
+                  class="w-[50.09px] rounded-r-[5px] h-[55px] mb-5 md:mb-0 bg-[#a1b0c7] border border-white px-[13px]">
+                  <img loading="lazy" class="w-[28px] h-[28px]" src="./images/svg/mail.svg" />
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="md:absolute bottom-0 text-center md:text-left">
+          <p class="text-[#ffffff] text-[14px] mt-[53px] md:mt-0 md:text-[12px]">
+            © EduWork 2020 - 2021 . All rights reserved.
+          </p>
+        </div>
+        <div
+          class="md:absolute md:right-0 md:bottom-0 md:float-right flex md:flex-row md:justify-between md:gap-[50px]">
+          <div class="mx-auto md:mx-0">
+            <p class="text-[#ffffff] text-[14px] mt-[12px] md:mt-0 md:text-[12px]">
+              Privacy and policy
+            </p>
+          </div>
+          <div>
+            <p class="text-[#ffffff] md:flex hidden text-[12px]">Terms</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wave-footer xl:min-w-[1340px]"></div>
+    <div class="absolute bottom-0 w-full xl:min-w-[1340px] h-full md:h-[981px] bg-footer -z-50"></div>
+  </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  let label = document.querySelectorAll(".acc");
+
+label.forEach((e) => {
+  e.addEventListener("click", () => {
+    removeClass();
+    e.classList.toggle("active");
+  });
+});
+
+function removeClass() {
+  label.forEach((e) => {
+    e.classList.remove("active");
+  });
+}
+</script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    effect: "slide",
+    direction: "horizontal",
+    autoplay: true,
+    // spaceBetween: 20,
+    slidesPerView: 'auto',   
+    slideToClickedSlide: true,
+   
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      520: {
+        slidesPerView: 2,
+      },
+      720: {
+        slidesPerView: 3,
+      },
+    },
+    grabCursor: true,
+
+    navigation: {
+      nextEl: ".swiper-Button-next",
+      prevEl: ".swiper-Button-prev",
+    },
+  });
+  var swiper1 = new Swiper(".mySwiperCategory", {
+    effect: "slide",
+    direction: "horizontal",
+    autoplay: true,
+    // spaceBetween: 20,
+    slidesPerView: 'auto',   
+    slideToClickedSlide: true,
+   
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      520: {
+        slidesPerView: 2,
+      },
+      720: {
+        slidesPerView: 3,
+      },
+    },
+    grabCursor: true,
+
+    navigation: {
+      nextEl: ".swiper-Button-next",
+      prevEl: ".swiper-Button-prev",
+    },
+  });
+</script>
+
+
+</html>
